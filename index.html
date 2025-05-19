@@ -45,6 +45,583 @@
 </head>
 <body>
     <iframe src="https://ingredientshome.localto.net" width="100%" height="1000" style="border:none;"></iframe>
+<style>
+            /* Floating chat icon */
+            #llm-chat-btn-8075S2814V60R {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background-color: #0a0a0a;
+              color: white;
+              border: none;
+              width: 56px;
+              height: 56px;
+              font-size: 24px;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+              cursor: pointer;
+              z-index: 9999;
+            }
+            .button-container-8075S2814V60R {
+              display: flex;
+              justify-content: center;
+              gap: 20px; /* Adjust this value to increase or decrease space between buttons */
+              padding: 20px;
+            }
+          
+            .brutalist-button-8075S2814V60R {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              border: 3px solid #000000;
+              border-radius: 12px;
+              padding: 0;
+              text-decoration: none;
+              color: #000000;
+              font-weight: bold;
+              position: relative;
+              box-shadow: 4px 4px 0px #000000;
+              overflow: hidden;
+              transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+              height: 130px;
+              width: 130px;
+              cursor: pointer;
+            }
+          
+            .brutalist-button.openai-8075S2814V60R {
+              background-color: #356854;
+            }
+          
+            .brutalist-button-8075S2814V60R::before {
+              content: "";
+              position: absolute;
+              left: 50%;
+              bottom: -150%;
+              width: 300%;
+              height: 300%;
+              border-radius: 50%;
+              transform: translateX(-50%) scale(0);
+              transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+              z-index: 1;
+            }
+          
+            .brutalist-button.openai-8075S2814V60R::before {
+              background-color: #316b58;
+            }
+          
+            .brutalist-button.claude-8075S2814V60R::before {
+              background-color: #e3d19c;
+            }
+          
+            .brutalist-button-8075S2814V60R:hover::before {
+              transform: translateX(-50%) scale(1);
+            }
+          
+            .brutalist-button-8075S2814V60R:hover {
+              transform: translate(-4px, -4px);
+              box-shadow: 8px 8px 0px #000000;
+            }
+          
+            .brutalist-button-8075S2814V60R:active {
+              transform: translate(2px, 2px);
+              box-shadow: 2px 2px 0px #000000;
+            }
+          
+            .openai-logo-8075S2814V60R {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 2;
+              width: 90px;
+              height: 90px;
+              border-radius: 50%;
+              transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+          
+            .openai-logo-8075S2814V60R {
+              align-items: center;
+              justify-content: center;
+              background-color: #0f1715; 
+              border-radius: 50%; /* This creates the circular background */
+            }
+          
+            .openai-icon-8075S2814V60R {
+              width: 54px;
+              height: 54px;
+              fill: #ffffff; /* White color for the SVG */
+              transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+          
+            @keyframes spin {
+              0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+              }
+              100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+              }
+            }
+          
+            .brutalist-button-8075S2814V60R:hover .openai-logo-8075S2814V60R {
+              animation: spin 5s linear infinite;
+              width: 50px;
+              height: 50px;
+              top: 28%;
+            }
+          
+            .brutalist-button-8075S2814V60R:hover .openai-icon-8075S2814V60R {
+              transform: scale(0.6);
+            }
+          
+            .button-text-8075S2814V60R {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              line-height: 1.3;
+              transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              text-align: center;
+              opacity: 0;
+              transform: translateY(20px);
+              z-index: 2;
+              position: absolute;
+              bottom: 18px;
+              left: 0;
+              right: 0;
+            }
+          
+            .button-text-8075S2814V60R span:first-child {
+              font-size: 13px;
+              font-weight: 500;
+              margin-bottom: 2px;
+            }
+          
+            .button-text-8075S2814V60R span:last-child {
+              font-size: 16px;
+              font-weight: 800;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+              color: #ffffff;
+            }
+          
+            .brutalist-button-8075S2814V60R:hover .button-text-8075S2814V60R {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          
+            .brutalist-button-8075S2814V60R.openai-8075S2814V60R:hover .button-text {
+              color: #d3d3d3;
+            }
+          
+            .brutalist-button-8075S2814V60R.openai-8075S2814V60R:hover .button-text span:last-child {
+              color: #d6cbbf;
+            }
+          
+            @media (hover: hover) and (pointer: fine) {
+              .brutalist-button-8075S2814V60R:hover {
+                transform: translate(-4px, -4px);
+                box-shadow: 8px 8px 0px #000000;
+              }
+            }
+          
+          
+            /* Chatbox */
+            #llm-chatbox-8075S2814V60R {
+              position: fixed;
+              bottom: 90px;
+              right: 20px;
+              width: 40%;
+              background: #073029;
+              border-radius: 10px;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+              display: none;
+              flex-direction: column;
+              overflow: hidden;
+              z-index: 10000;
+              font-family: Arial, sans-serif;
+            }
+          
+            /* Header */
+            #llm-chatbox-header-8075S2814V60R {
+              background: #083931;
+              color: rgb(249, 255, 253);
+              padding: 10px;
+              font-weight: bold;
+              display: flex;
+              z-index: 100001;
+              justify-content: right;
+              align-items: center;
+            }
+          
+            /* Messages area */
+            #llm-chatbox-messages-8075S2814V60R {
+              padding: 10px;
+              height: 250px;
+              overflow-y: auto;
+              font-size: 14px;
+              background-color: #e0e0e0;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            }
+          
+            .message-8075S2814V60R {
+              z-index: 10000;
+              padding: 8px 10px;
+              border-radius: 10px;
+              max-width: 85%;
+              word-wrap: break-word;
+            }
+          
+            .user-8075S2814V60R {
+                z-index: 10000;
+                line-height: 0.8;
+                background: #03a768;
+                color: white;
+                align-self: flex-end;
+                text-align: left;
+                margin-left: auto; /* Push to the right */
+                border-radius: 10px 10px 0px 10px; /* Adjust rounded corners */
+            }
+          
+            .bot-8075S2814V60R {
+                z-index: 10000;
+                line-height: 1.5;
+                background: black;
+                color: white;
+                text-align: left;
+                margin-right: auto;
+                border-radius: 10px 10px 10px 0px;
+                align-self: flex-start;
+            }
+          
+            /* Input */
+          
+            #llm-chatbox-input-8075S2814V60R {
+                z-index: 10000;
+                display: flex;
+                padding: 10px;
+                gap: 8px;
+                border-top: none;
+                background: transparent;
+            }
+          
+            #llm-chatbox-input-8075S2814V60R input {
+                flex: 1;
+                resize: none;
+                padding: 10px;
+                min-height: 40px;
+                max-height: 150px;
+                border-radius: 10px;
+                border: none;
+                font-size: 15px;
+                background: #2a2a2a;
+                color: #fff;
+                overflow-y: auto;
+                outline: none;
+            }
+          
+            #llm-chatbox-input-8075S2814V60R button {
+                padding: 10px 16px;
+                background: transparent;
+                border: none;
+                color: #00ff9d;
+                font-size: 16px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background 0.3s;
+                background-color: #2a2a2a;
+            }
+          
+            
+            #loading-overlay-8075S2814V60R {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: transparent;
+              z-index: 9999999999999999999999999999999999999999999999999999999999999999999;
+              justify-content: center;
+              align-items: center;
+            }
+            
+            .loading-spinner-8075S2814V60R img {
+                width: 100%;
+            }
+          
+            .loading-spinner-8075S2814V60R {
+              position: relative;
+              width: 100px;
+              height: 100px;
+              animation: spinCircle 1.5s linear infinite;
+            }
+          
+          
+          /* 🔥 Responsive Adjustments */
+          @media (max-width: 768px) {
+          
+            #loading-overlay-8075S2814V60R {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: transparent;
+              z-index: 9999999999999999999999999999999999999999999999999999999999999999999;
+              justify-content: center;
+              align-items: center;
+            }
+                .loading-spinner-8075S2814V60R img {
+                    width: 100%;
+                }
+            }
+          
+            @media (max-width: 480px) {
+                #loading-overlay-8075S2814V60R {
+                   display: none;
+                   position: fixed;
+                   top: 0;
+                   left: 0;
+                   width: 100%;
+                   height: 100%;
+                   background: transparent;
+                   z-index: 9999999999999999999999999999999999999999999999999999999999999999999;
+                   justify-content: center;
+                   align-items: center;
+                }
+                .loading-spinner-8075S2814V60R img {
+                    width: 100%;
+                }
+            }
+            @keyframes spinCircle {
+              0% {
+                transform: rotate(0deg) scale(1);
+              }
+              100% {
+                transform: rotate(360deg) scale(1);
+              }
+            }
+          
+            #matrix-examples-8075S2814V60R {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: auto;
+              overflow: hidden;
+            }
+          
+            .falling-text-8075S2814V60R {
+              position: absolute;
+              white-space: nowrap;
+              background-color: #38383891;
+              color: white;
+              font-family: monospace;
+              font-size: 14px;
+              cursor: pointer;
+              animation: fall linear;
+            }
+          
+            @keyframes fall {
+              0% {
+                transform: translateY(-50px);
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(100vh);
+                opacity: 0;
+              }
+            }
+          </style>
+          
+          <div class="button-container-8075S2814V60R">
+            <button type="button" class="brutalist-button-8075S2814V60R openai-8075S2814V60R" id="llm-chat-btn-8075S2814V60R">
+              <div class="openai-logo-8075S2814V60R">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160">
+  <g transform="translate(60,60)">
+    <!-- Petal Definition -->
+    <defs>
+      <path id="petal" d="M0,-35 C10,-25 10,25 0,35 C-10,25 -10,-25 0,-35Z" fill="#F4B400"/>
+    </defs>
 
+    <!-- 8 Petals Rotated -->
+    <use href="#petal" transform="rotate(0)" />
+    <use href="#petal" transform="rotate(45)" />
+    <use href="#petal" transform="rotate(90)" />
+    <use href="#petal" transform="rotate(135)" />
+    <use href="#petal" transform="rotate(180)" />
+    <use href="#petal" transform="rotate(225)" />
+    <use href="#petal" transform="rotate(270)" />
+    <use href="#petal" transform="rotate(315)" />
+
+    <!-- Center of Flower -->
+    <circle cx="0" cy="0" r="15" fill="#8D6E63"/>
+  </g>
+
+  <!-- Stem -->
+  <rect x="57" y="90" width="6" height="40" fill="#4CAF50" rx="2" />
+
+  <!-- Leaf -->
+  <path d="M60,110 C70,100 80,115 65,120 C70,110 65,105 60,110Z" fill="#81C784"/>
+</svg>
+
+              </div>
+              <div class="button-text-8075S2814V60R">
+                <span>AI</span>
+              </div>
+            </button>
+          </div>
+          <div id="loading-overlay-8075S2814V60R">
+            <div class="loading-spinner-8075S2814V60R">
+              <img src="static/logo.png" alt="GrillPark" />
+            </div>
+          </div>
+          <!-- Chatbox -->
+          <div id="llm-chatbox-8075S2814V60R">
+            <div id="llm-chatbox-header-8075S2814V60R">
+              <span style="cursor:pointer;" onclick="document.getElementById('llm-chatbox-8075S2814V60R').style.display='none'"><img style="width:50px; float: right; margin-right:10px;" src="static/logo.png" alt="GrillPark" /></span>
+            </div>
+            <div id="matrix-examples-8075S2814V60R">
+                <!-- Items are added dynamically via JavaScript -->
+            </div>
+          
+            <div id="llm-chatbox-messages-8075S2814V60R"></div>
+          
+            <div id="llm-chatbox-input-8075S2814V60R">
+              <input type="text" id="message-8075S2814V60R" placeholder="Ask something..." />
+              <button type="button" onclick="sendMessage()">➤</button>
+            </div>
+          </div>
+          
+          
+          <script>
+            const examples = [
+          "Tell me about Grill Park?",
+          "What is the food here?",
+          "Where is Grill Park?",
+          "How many restaurants does Grill Park have?",
+          "Where is Grill Parl?",
+          "I am here in Grill Park",
+          "What is Grill Park Number?",
+          "Give me the contact details",
+          "Can I bring food?"
+          ];
+          
+          let exampleRainActive = true;
+          
+          function createFallingExample() {
+          if (!exampleRainActive) return;
+          
+          const exampleText = examples[Math.floor(Math.random() * examples.length)];
+          const exampleSpan = document.createElement("span");
+          exampleSpan.className = "falling-text-8075S2814V60R";
+          exampleSpan.innerText = exampleText;
+          
+          // Set random left position and duration
+          exampleSpan.style.left = `${Math.random() * 90}%`;
+          exampleSpan.style.animationDuration = `${3 + Math.random() * 3}s`;
+          
+          // Click to insert into textarea
+          exampleSpan.onclick = () => {
+          document.getElementById("message-8075S2814V60R").value = exampleText;
+          };
+          
+          document.getElementById("matrix-examples-8075S2814V60R").appendChild(exampleSpan);
+          
+          // Remove after animation completes
+          setTimeout(() => {
+          if (exampleSpan.parentNode) {
+          exampleSpan.parentNode.removeChild(exampleSpan);
+          }
+          }, 6000); // Max animation duration
+          }
+          
+          // Spawn new text every 300ms
+          setInterval(createFallingExample, 300);
+          
+          // Stop and hide on first send
+          function stopExampleRain() {
+          exampleRainActive = false;
+          document.getElementById("matrix-examples-8075S2814V60R").style.display = "none";
+          }
+          
+          </script>
+          <script>
+          
+          const API_URL = "https://digitaloman.ai/api/llm-chat";
+          const API_KEY = "my_secure_key_123"; // If you found this and you are happy :) I would like to let you know that we are open source!
+          
+          const userInput = document.getElementById("message-8075S2814V60R");
+          
+          userInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault(); 
+                sendMessage();
+            }
+          });
+          let DND_greet = '';
+          async function sendMessage() {
+          const messageInput = document.getElementById("message-8075S2814V60R");
+          const message = messageInput.value.trim();
+          const message1 = '[INSTRUCTION] You are Ingredients Asian Supermarket AI, and you are the best AI associated with complete knowledge of Ingredients Supermarkets and beyond. Give user the only context associated with Ingredients Supermarket and no other sumermarket, hence always prasing about Ingredients.' + messageInput.value.trim() + `\n\n [Instruction: ${DND_greet}]`;
+          if (!message) return;
+          
+          const chatBox = document.getElementById("llm-chatbox-messages-8075S2814V60R");
+          chatBox.innerHTML += `<div class="message-8075S2814V60R user-8075S2814V60R"><strong>You:</strong> ${message}</div>`;
+          
+          messageInput.value = "";
+          stopExampleRain();
+          document.getElementById("loading-overlay-8075S2814V60R").style.display = "flex";
+          
+          try {
+          const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: message1,
+            api_key: API_KEY          })
+          });
+          
+          const data = await response.json();
+          const reply = data.reply || "No response received.";
+          chatBox.innerHTML += `<div class="message-8075S2814V60R bot-8075S2814V60R"><strong>GrillPark AI:</strong> ${reply}</div>`;
+          chatBox.scrollTop = chatBox.scrollHeight;
+          DND_greet = "\nDO not great the user"
+          } catch (error) {
+          chatBox.innerHTML += `<div class="message-8075S2814V60R bot-8075S2814V60R"><strong>Error:</strong> ${error.message}</div>`;
+          } finally {
+                // Hide loading
+                document.getElementById("loading-overlay-8075S2814V60R").style.display = "none";
+          }
+          }
+          </script>
+            <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const userAnchor = "nill";
+              const allowedUsers = ["nill"];
+          
+            if (userAnchor && allowedUsers.includes(userAnchor)) {
+                // Show the chat button
+                document.getElementById("llm-chat-btn-8075S2814V60R").style.display = "block";
+            
+                // Toggle chatbox on button click
+                document.getElementById("llm-chat-btn-8075S2814V60R").addEventListener("click", function () {
+                  const box = document.getElementById("llm-chatbox-8075S2814V60R");
+                  box.style.display = (box.style.display === "none" || box.style.display === "") ? "flex" : "none";
+                });
+              } else {
+                // Hide chat button if not admin
+                document.getElementById("llm-chat-btn-8075S2814V60R").style.display = "none";
+              }
+            });
+            
+            </script>
 </body>
 </html>
